@@ -30,11 +30,13 @@ By default, operation 'Go to previous tabpage' is mapped to shortkey '\[t', and 
 edit file 'tabpage-jumper/plugin/setting.vim', and cancel the lines below,
 
 ```
-<center>nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>     
+<center>
+nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>     
 nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>     
 -----------------------------------------------------------------------------     
 " nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
-" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr></center>   
+" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>   
+</center>   
 ```
 
 ##### 2. Add your own mapping
