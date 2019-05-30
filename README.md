@@ -2,9 +2,9 @@
 
 ## Introduciton
 
-This plugin is built for VIM users switching between previously and currently opened tabpages, it works exactly like VIM built-in shortkey Ctrl+i/Ctrl+o, except for it sources tabpages instead of text postions.     
+This plugin is built for VIM users switching between previously and currently opened tabpages, it works exactly like VIM built-in shortkey Ctrl+i/Ctrl+o, except for it sources tabpages instead of text positions.     
     
-If you are a VIM tabpage user for either developing or just editing, it could be quite a handy tool for you to deal with different opened tabpges, especially when tabpages's growing more and more. Before I decided to make this plugin, I'vd been drained much by lots of tabpages opened at the same time, and the built-in tabpage commands don't support this feature, so each time I have to remember the tabpage number and jump back manually. In this case, I got lost many times, but for now, with this small plugin, you don't have to worried about being lost at all!    
+If you are a VIM tabpage user for either developing or just editing, it could be quite a handy tool for you to deal with different opened tabpges, especially when tabpages's growing more and more. With this small plugin, you don't have to worried about being lost!    
     
 This plugin maintains a jumplist for tabpages just like Ctrl+i/Ctrl+o, it will remember the tabpages you have entered or leaved, newly opened or closed. This jumplist will always stay updated when event #TabEnter and #TabLeave comes, even if you use tabmove command to move current tabpge, it will stay updated as well.  
     
