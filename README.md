@@ -28,10 +28,11 @@ edit file 'tabpage-jumper/plugin/setting.vim', and cancel the lines below,
 (```)
 nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>
 nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
------------------------------------------------------------------------------
+\-----------------------------------------------------------------------------
 " nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
 " nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
 (```)
+
 +##### Add your own mapping
 add two lines mapping for 'Go to previous tabpage' & 'Go to next tabpage' operation in either above setting.vim file or your own .vimrc file, for example,   
 (```)
