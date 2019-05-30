@@ -23,21 +23,21 @@ By default, the jumplist length is 10, which means, only 10 previous tabpage num
 
 ## Mapping
 By default, operation 'Go to previous tabpage' is mapped to shortkey '\[t', and operation 'Go to next tabpage' is mapped to '\[t', you can set them as what you like.
-+##### Cancel the existent mapping
+##### -Cancel the existent mapping
 edit file 'tabpage-jumper/plugin/setting.vim', and cancel the lines below,
 (```)
-nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>
-nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
-\-----------------------------------------------------------------------------
-" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
-" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
+nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>     
+nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>     
+\-----------------------------------------------------------------------------     
+" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
+" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
 (```)
 
-+##### Add your own mapping
+##### -Add your own mapping
 add two lines mapping for 'Go to previous tabpage' & 'Go to next tabpage' operation in either above setting.vim file or your own .vimrc file, for example,   
 (```)
-nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
-nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
+nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
+nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
 (```)
 
 After getting all these ready, then just get started!
