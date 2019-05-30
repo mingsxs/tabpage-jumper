@@ -21,7 +21,7 @@ Put below line in your `.vimrc` file for getting this plugin,
 
 and do   
 
-`PluginInstall`.   
+`:PluginInstall` in command line.   
 
 
 ## Option
