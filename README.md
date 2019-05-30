@@ -31,7 +31,7 @@ By default, the jumplist length is 10, which means only 10 previous tabpage numb
 
 
 ## Mapping
-By default, operation `Go to previous tabpage` is mapped to shortkey `\[t`, and operation `Go to next tabpage` is mapped to `\[t`, you can set them as what you like.   
+By default, operation `Go to previous tabpage` is mapped to shortkey `[t`, and operation `Go to next tabpage` is mapped to `[t`, you can set them as what you like.   
 
 ##### 1. Cancel the existent mapping
 edit file `tabpage-jumper/plugin/setting.vim`, and cancel the lines as below,   
