@@ -16,7 +16,7 @@ Just download both files(jumper.vim & setting.vim) with the directories, and put
 
 #### 2. Using Vundle
 Put below line in your .vimrc file for getting this plugin,   
-<p align="center">`Plugin 'mingsxs/tabpage-jumper'`<\p>    
+`<p align="center"> Plugin 'mingsxs/tabpage-jumper'<\p>`    
 and do   
 `PluginInstall`   
 
