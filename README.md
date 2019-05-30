@@ -25,7 +25,7 @@ and do
 
 
 ## Option
-By default, the jumplist length is 10, which means only 10 previous tabpage number will be remembered and updated. If you want to change it, put line like below in your `.vimrc` or whatever `.vim` file that will be sourced during VIM startup.  
+By default, the jumplist length is 10, which means only 10 previous tabpage numbers will be remembered and updated. If you want to adjust it, put line like below in your `.vimrc` or whatever `.vim` file that will be sourced during VIM startup.  
 
 `let g:tabpage_queue_max = 20`    
 
