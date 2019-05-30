@@ -8,7 +8,7 @@ If you are a VIM tabpage user for either developing or just editing, it could be
     
 This plugin maintains a jumplist for tabpages just like Ctrl+i/Ctrl+o, it will remember the tabpages you have entered or leaved, newly opened or closed. This jumplist will always stay updated when event `#TabEnter` and `#TabLeave` comes, even if you use tabmove command to move current tabpge, it will stay updated as well.  
     
-Addtionally, for robustness purpose, I add self-check in the code in case the event triggers #TabEnter or #TabLeave doesn't work well sometimes. When this case happens, plugin will wipe the jumplist history and restart working from null list.   
+Addtionally, for robustness purpose, I add self-check in the code in case the event triggers `#TabEnter` or `#TabLeave` doesn't work well sometimes. When this case happens, plugin will wipe the jumplist history and restart working from null list.   
 
 ## Install
 #### 1. Downloading file
@@ -16,9 +16,9 @@ Just download both files(jumper.vim & setting.vim) with the directories, and put
 
 #### 2. Using Vundle
 Put below line in your .vimrc file for getting this plugin,   
-`Plugin 'mingsxs/tabpage-jumper'`    
+                                        `Plugin 'mingsxs/tabpage-jumper'`    
 and do   
-`PluginInstall`   
+                                        `PluginInstall`   
 
 ##Option
 By default, the jumplist length is 10, which means, only 10 previous tabpage number will be remembered and updated. If you want to change jumplist length, put script line like below in your .vimrc or whatever .vim file that will be sourced during VIM startup.   
@@ -28,19 +28,19 @@ By default, the jumplist length is 10, which means, only 10 previous tabpage num
 By default, operation 'Go to previous tabpage' is mapped to shortkey '\[t', and operation 'Go to next tabpage' is mapped to '\[t', you can set them as what you like.
 ##### 1. Cancel the existent mapping
 edit file 'tabpage-jumper/plugin/setting.vim', and cancel the lines below,
-```
-nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>     
-nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>     
------------------------------------------------------------------------------     
-" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
-" nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
-```
+                        ```
+                        nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>     
+                        nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>     
+                        -----------------------------------------------------------------------------     
+                        " nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
+                        " nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
+                        ```
 
 ##### 2. Add your own mapping
 add two lines mapping for 'Go to previous tabpage' & 'Go to next tabpage' operation in either above setting.vim file or your own .vimrc file, for example,   
-```
-nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
-nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
-```
+                        ```
+                        nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
+                        nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
+                        ```
 
 After getting all these ready, then just get started!
