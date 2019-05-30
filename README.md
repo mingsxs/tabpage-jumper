@@ -6,7 +6,7 @@ This plugin is built for VIM users switching between previously and currently op
     
 If you are a VIM tabpage user, it could be quite a handy tool for you to deal with different opened tabpges, especially when tabpages's growing more and more. With this small plugin, you don't have to worry about being lost!    
     
-This plugin maintains a jumplist for tabpages just like `Ctrl+i`&`Ctrl+o`. This jumplist will always stay updated when event `#TabEnter` or `#TabLeave` comes, even if you use tabmove command to move current tabpge, it will stay updated as well.  
+This plugin maintains a jumplist for tabpages just like `Ctrl+i`&`Ctrl+o`. This jumplist will always stay updated when event `#TabEnter` or `#TabLeave` comes, even if you use `tabmove` command to move current tabpge, it will stay updated as well.  
     
 Addtionally, for robustness purpose, I add self-check in case the event triggers `#TabEnter` or `#TabLeave` doesn't work sometimes. When this case happens, plugin will wipe the jumplist history and restart working as a null list.   
 
