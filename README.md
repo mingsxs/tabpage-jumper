@@ -20,7 +20,7 @@ Put below line in your .vimrc file for getting this plugin,
 and do   
 `PluginInstall`   
 
-##Option
+## Option
 By default, the jumplist length is 10, which means, only 10 previous tabpage number will be remembered and updated. If you want to change jumplist length, put script line like below in your .vimrc or whatever .vim file that will be sourced during VIM startup.   
 `let g:tabpage_queue_max = 20`
 
@@ -45,7 +45,5 @@ add two lines mapping for 'Go to previous tabpage' & 'Go to next tabpage' operat
 nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
 nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
 ```
-
-
-   
-### After getting all these ready, then just get started!
+  
+##### After getting all these ready, then just get started!
