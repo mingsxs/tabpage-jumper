@@ -53,4 +53,4 @@ nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>
 nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>    
 ```
   
-##### After getting all these ready, you can get started!
+### After getting all these ready, you can get started!
