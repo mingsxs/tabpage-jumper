@@ -2,7 +2,7 @@
 
 ## Introduciton
 
-This plugin is built for VIM users switching between previously and currently opened tabpages, it works exactly like VIM built-in shortkey `Ctrl+i`/`Ctrl+o`, except for it sources tabpages instead of text positions.     
+This plugin is built for VIM users to switch between previously and currently opened tabpages, it works exactly like VIM built-in shortkey `Ctrl+i`/`Ctrl+o`, except for it sources tabpages instead of text positions.     
     
 If you are a VIM tabpage user, it could be quite a handy tool for you to deal with different opened tabpges, especially when tabpages's growing more and more. With this small plugin, you don't have to worry about being lost!    
     
