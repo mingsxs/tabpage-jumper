@@ -15,7 +15,7 @@ Addtionally, for robustness purpose, I add self-check in case the event triggers
 Just download both files(`jumper.vim` & `setting.vim`) with the directories dependency, and put the root directory(`tabpage-jumper/...`) under your own `~/.vim` folder. Remember don't break current directory levels when downloading it.
 
 #### 2. Using Vundle
-Put below line in your `.vimrc` file for getting this plugin,  
+Put below line in your `~/.vimrc` file for getting this plugin,  
 
 `Plugin 'mingsxs/tabpage-jumper'`    
 
@@ -25,7 +25,7 @@ and do
 
 
 ## Option
-By default, the jumplist length is 10, which means only 10 previous tabpage numbers will be remembered and updated. If you want to adjust it, put line like below in your `.vimrc` or whatever `.vim` file that will be sourced during VIM startup.  
+By default, the jumplist length is 10, which means only 10 previous tabpage numbers will be remembered and updated. If you want to adjust it, put line like below in your `~/.vimrc` or whatever `~/.vim` file that will be sourced during VIM startup.  
 
 `let g:tabpage_queue_max = 20`    
 
@@ -46,7 +46,7 @@ nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
 
 
 ##### 2. Add your own mapping
-add two lines mapping for `Go to previous tabpage`&`Go to next tabpage` operation in either `setting.vim` file or your own `.vimrc` file, for example,   
+add two lines mapping for `Go to previous tabpage`&`Go to next tabpage` operation in either `setting.vim` file or your own `~/.vimrc` file, for example,   
 
 ```
 nnoremap <silent> <...> *** :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>    
