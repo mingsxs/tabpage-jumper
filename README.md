@@ -12,7 +12,7 @@ Addtionally, for robustness purpose, I add self-check in case the event triggers
 
 ## Install
 #### 1. Downloading file
-Just download both files(`jumper.vim` & `setting.vim`) with the directories dependency, and put the root directory(`tabpage-jumper/...`) under your own `.vim/bundle` folder. Remember don't break current directory levels when downloading it.
+Just download both files(`jumper.vim` & `setting.vim`) with the directories dependency, and put the root directory(`tabpage-jumper/...`) under your own `~/.vim` folder. Remember don't break current directory levels when downloading it.
 
 #### 2. Using Vundle
 Put below line in your `.vimrc` file for getting this plugin,  
