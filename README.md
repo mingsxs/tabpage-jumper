@@ -2,11 +2,11 @@
 
 ## Introduciton
 
-This plugin is built for VIM users to switch between previously and currently opened tabpages, it works exactly like VIM built-in shortkey `Ctrl+i`/`Ctrl+o`, except for it sources tabpages instead of text positions.     
+This plugin is built for `VIM` users to switch between previously and currently opened tabpages, it works exactly like `VIM` built-in shortkey `Ctrl+i`/`Ctrl+o`, except for it sources tabpages instead of text positions.     
     
-If you are a VIM tabpage user, it could be quite a handy tool for you to deal with different opened tabpges, especially when tabpages's growing more and more. With this small plugin, you don't have to worry about being lost!    
+If you are a `VIM` [`tabpage`](http://vimdoc.sourceforge.net/htmldoc/tabpage.html) user, it could be quite a handy tool for you to deal with different opened tabpges, especially when tabpages's growing more and more. With this small plugin, you don't have to worry about being lost!    
     
-This plugin maintains a jumplist for tabpages just like `Ctrl+i`&`Ctrl+o`. This jumplist will always stay updated when event `#TabEnter` or `#TabLeave` comes, even if you use `tabmove` command to move current tabpge, it will stay updated as well.  
+This plugin maintains a jumplist for tabpages just like `Ctrl+i`&`Ctrl+o`. This jumplist will always stay updated when event [`#TabEnter`](http://vimdoc.sourceforge.net/htmldoc/autocmd.html#TabEnter) or [`#TabLeave`](http://vimdoc.sourceforge.net/htmldoc/autocmd.html#TabLeave) comes, even if you use `tabmove` command to move current tabpge, it will stay updated as well.  
     
 Addtionally, for robustness purpose, I add self-check in case the event triggers `#TabEnter` or `#TabLeave` doesn't work sometimes. When this case happens, plugin will wipe the jumplist history and restart working as a null list.   
 
@@ -25,7 +25,7 @@ and do
 
 
 ## Option
-By default, the jumplist length is 10, which means only 10 previous tabpage numbers will be remembered and updated. If you want to adjust it, put line like below in your `~/.vimrc` or whatever `~/.vim` file that will be sourced during VIM startup.  
+By default, the jumplist length is 10, which means only 10 previous tabpage numbers will be remembered and updated. If you want to adjust it, put line like below in your `~/.vimrc` or whatever `~/.vim` file that will be sourced during `VIM` startup.  
 
 `let g:tabpage_queue_max = 20`    
 
