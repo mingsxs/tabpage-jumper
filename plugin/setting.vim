@@ -18,16 +18,16 @@ endif
 "-----------------------------------------------------------------------
 " update tabpage jump queue and tabpage queue numbers.
 "-----------------------------------------------------------------------
-autocmd TabLeave * :call mingsxs#tabpage#jumper#MaintainJumpQueueWhenLeave()
-autocmd TabEnter * :call mingsxs#tabpage#jumper#MaintainJumpQueueWhenEnter()
+autocmd TabLeave * :call mingsxs#jumper#MaintainJumpQueueWhenLeave()
+autocmd TabEnter * :call mingsxs#jumper#MaintainJumpQueueWhenEnter()
 
 
 "-----------------------------------------------------------------------
 " Vim tabpage feature map.
 "-----------------------------------------------------------------------
 " go to previous tabpage in tabpage jump list.
-nnoremap <silent> [t :call mingsxs#tabpage#jumper#GoPreviousTabpage()<cr>
+nnoremap <silent> [t :call mingsxs#jumper#GoPreviousTabpage()<cr>
 
 " go to next tabpage in tabpage jump list.
-nnoremap <silent> ]t :call mingsxs#tabpage#jumper#GoNextTabpage()<cr>
+nnoremap <silent> ]t :call mingsxs#jumper#GoNextTabpage()<cr>
 

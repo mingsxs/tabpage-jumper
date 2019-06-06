@@ -1,6 +1,6 @@
 
 "----------------------------------------------------
-" This file contains self-defined tabpage jumper    |
+" This file contains main-body of tabpage jumper    |
 " plugin.                                           |
 "                                                   |
 " Date: 2019/05/24                                  |
@@ -91,7 +91,7 @@ endif
 
 " update tabpage jump queue, can only be triggered when open a new tab or
 " manually jump to certain existent tabpage.
-function! mingsxs#tabpage#jumper#MaintainJumpQueueWhenEnter()
+function! mingsxs#jumper#MaintainJumpQueueWhenEnter()
     let l:curPageNumber = tabpagenr()
 
     if s:tabpageJumpQueueUpdateTrigger
@@ -159,7 +159,7 @@ endfunction
 "
 " **********************************************************************
 " compare current tabpage number with the one stored when #TabEnter comes.
-function! mingsxs#tabpage#jumper#MaintainJumpQueueWhenLeave()
+function! mingsxs#jumper#MaintainJumpQueueWhenLeave()
     let l:curPageNumber = tabpagenr()
     let l:i = 0
     let l:length = len(s:tabpageJumpQueue)
@@ -188,7 +188,7 @@ function! mingsxs#tabpage#jumper#MaintainJumpQueueWhenLeave()
 endfunction
 
 " go to previous tabpage.
-function! mingsxs#tabpage#jumper#GoPreviousTabpage()
+function! mingsxs#jumper#GoPreviousTabpage()
     " Add robustness.
     let l:curPageNumber = tabpagenr()
     if s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex] != l:curPageNumber
@@ -211,7 +211,7 @@ function! mingsxs#tabpage#jumper#GoPreviousTabpage()
 endfunction
 
 " go to next tabpage.
-function! mingsxs#tabpage#jumper#GoNextTabpage()
+function! mingsxs#jumper#GoNextTabpage()
     " Add robustness.
     let l:curPageNumber = tabpagenr()
     if s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex] != l:curPageNumber
