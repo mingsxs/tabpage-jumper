@@ -37,7 +37,8 @@ function s:UpdateTabpageNumberWhenNew()
     " this tabpage is new opened tabpage.
     let l:newTabpageNumber = tabpagenr()
     let l:i = 0
-    let l:length = len(s:tabpageJumpQueue)
+    " skip the last item.
+    let l:length = len(s:tabpageJumpQueue) - 1
     while l:i < l:length
         if s:tabpageJumpQueue[l:i] >= l:newTabpageNumber
             let s:tabpageJumpQueue[l:i] += 1
@@ -48,12 +49,16 @@ endfunction
 
 " update tabpage number in jump queue when close a tabpage.
 function s:UpdateTabpageNumberAfterClosed()
-    " this tabpge number belongs to the one it will enter, not the closed one.
+    " this tabpge number indicates the one it will enter, not the closed one.
     let l:newTabpageNumber = tabpagenr()
+    let l:closedTabpageNumber = s:tabpageLeaved
     let l:i = 0
     let l:length = len(s:tabpageJumpQueue)
     while l:i < l:length
-        if s:tabpageJumpQueue[l:i] > l:newTabpageNumber
+        if s:tabpageJumpQueue[l:i] == l:closedTabpageNumber
+            call remove(s:tabpageJumpQueue, l:i)
+            let l:length -= 1
+        elseif s:tabpageJumpQueue[l:i] > l:newTabpageNumber
             let s:tabpageJumpQueue[l:i] -= 1
         endif
         let l:i += 1
@@ -78,24 +83,17 @@ endfunction
 " **********************************************************************
 if !exists('s:tabpageJumpQueueUpdateTrigger')
     let s:tabpageJumpQueueUpdateTrigger = 1
-    " value below stores the opened tabpage number.
+    " var below stores the opened tabpage number.
     let s:tabpageOpened = 1
+    " var below stores tabpage number just left.
+    let s:tabpageLeaved = 1
 endif
 
 " update tabpage jump queue, can only be triggered when open a new tab or
 " manually jump to certain existent tabpage.
 function! mingsxs#tabpage#jumper#MaintainJumpQueueWhenEnter()
-    let l:total = tabpagenr('$')
     let l:curPageNumber = tabpagenr()
-    " if new tabpages opened.
-    if l:total > s:tabpagesNumber
-        call s:UpdateTabpageNumberWhenNew()
-        let s:tabpagesNumber = l:total
-    " if one tabpage closed.
-    elseif l:total < s:tabpagesNumber
-        call s:UpdateTabpageNumberAfterClosed()
-        let s:tabpagesNumber = l:total
-    endif
+
     if s:tabpageJumpQueueUpdateTrigger
         " update tabpage jump queue.
         if s:tabpageJumpQueueCurrentIndex > 0
@@ -105,13 +103,27 @@ function! mingsxs#tabpage#jumper#MaintainJumpQueueWhenEnter()
         else
             let s:tabpageJumpQueue = s:tabpageJumpQueue[1:] + [s:tabpageJumpQueue[0], l:curPageNumber]
         endif
+
+        let l:total = tabpagenr('$')
+        " if new tabpages opened.
+        if l:total > s:tabpagesNumber
+            call s:UpdateTabpageNumberWhenNew()
+            let s:tabpagesNumber = l:total
+        " if one tabpage closed.
+        elseif l:total < s:tabpagesNumber
+            call s:UpdateTabpageNumberAfterClosed()
+            let s:tabpagesNumber = l:total
+        endif
+
         " check if tabpage jump queue overflows.
         if len(s:tabpageJumpQueue) > g:tabpage_queue_max
             let s:tabpageJumpQueue = s:tabpageJumpQueue[1:]
         endif
+
         " update current tabpage location index.
         let s:tabpageJumpQueueCurrentIndex = len(s:tabpageJumpQueue) - 1
     endif
+
     " update s:tabpageOpened to current tabpage number at last.
     let s:tabpageOpened = l:curPageNumber
 endfunction
@@ -172,6 +184,7 @@ function! mingsxs#tabpage#jumper#MaintainJumpQueueWhenLeave()
             endwhile
         endif
     endif
+    let s:tabpageLeaved = l:curPageNumber
 endfunction
 
 " go to previous tabpage.
