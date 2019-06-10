@@ -4,6 +4,7 @@
 " plugin.                                           |
 "                                                   |
 " Date: 2019/05/24                                  |
+" Lisence: MIT                                      |
 " Author: Ming Li (adagio.ming@gmail.com)           |
 "----------------------------------------------------
 
