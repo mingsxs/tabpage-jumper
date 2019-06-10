@@ -59,8 +59,20 @@ function s:UpdateTabpageNumberAfterClosed()
         if s:tabpageJumpQueue[l:i] == l:closedTabpageNumber
             call remove(s:tabpageJumpQueue, l:i)
             let l:length -= 1
+            continue
         elseif s:tabpageJumpQueue[l:i] > l:newTabpageNumber
             let s:tabpageJumpQueue[l:i] -= 1
+        endif
+        let l:i += 1
+    endwhile
+    " remove duplicate neighbours.
+    let l:i = 0
+    let l:length -= 1
+    while l:i < l:length
+        if s:tabpageJumpQueue[l:i] == s:tabpageJumpQueue[l:i+1]
+            call remove(s:tabpageJumpQueue, l:i)
+            let l:length -= 1
+            continue
         endif
         let l:i += 1
     endwhile
@@ -88,6 +100,8 @@ if !exists('s:tabpageJumpQueueUpdateTrigger')
     let s:tabpageOpened = 1
     " var below stores tabpage number just left.
     let s:tabpageLeaved = 1
+    " var below set the tabpageJumpQueue reset flag.
+    let s:tabpageJumpQueueRst = 0
 endif
 
 " update tabpage jump queue, can only be triggered when open a new tab or
@@ -112,7 +126,11 @@ function! mingsxs#jumper#MaintainJumpQueueWhenEnter()
             let s:tabpagesNumber = l:total
         " if one tabpage closed.
         elseif l:total < s:tabpagesNumber
-            call s:UpdateTabpageNumberAfterClosed()
+            if !s:tabpageJumpQueueRst
+                call s:UpdateTabpageNumberAfterClosed()
+            else
+                let s:tabpgeJumpQueueRst = 0
+            endif
             let s:tabpagesNumber = l:total
         endif
 
@@ -164,7 +182,7 @@ function! mingsxs#jumper#MaintainJumpQueueWhenLeave()
     let l:curPageNumber = tabpagenr()
     let l:i = 0
     let l:length = len(s:tabpageJumpQueue)
-    if l:curPageNumber != s:tabpageOpened
+    if (l:curPageNumber != s:tabpageOpened) && (!s:tabpageJumpQueueRst)
         if l:curPageNumber > s:tabpageOpened
             while l:i < l:length
                 if s:tabpageJumpQueue[l:i] > s:tabpageOpened && s:tabpageJumpQueue[l:i] <= l:curPageNumber
@@ -190,13 +208,6 @@ endfunction
 
 " go to previous tabpage.
 function! mingsxs#jumper#GoPreviousTabpage()
-    " Add robustness.
-    let l:curPageNumber = tabpagenr()
-    if s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex] != l:curPageNumber
-        echomsg "Error detected, jumplist cleared."
-        let s:tabpageJumpQueue = [l:curPageNumber]
-        let s:tabpageJumpQueueCurrentIndex = 0
-    endif
     if s:tabpageJumpQueueCurrentIndex > 0
         " close tabpage jump queue trigger flag.
         let s:tabpageJumpQueueUpdateTrigger = 0
@@ -204,6 +215,15 @@ function! mingsxs#jumper#GoPreviousTabpage()
         let l:previousTabpageNumber = s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex]
         let l:jumpCmd = l:previousTabpageNumber.'tabnext'
         exe l:jumpCmd
+        " Add robustness.
+        let l:curPageNumber = tabpagenr()
+        if s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex] != l:curPageNumber
+            echomsg "Error detected, jumplist cleared."
+            let s:tabpageJumpQueue = [l:curPageNumber]
+            let s:tabpageJumpQueueCurrentIndex = 0
+            let s:tabpageJumpQueueRst = 1
+        endif
+        return 0
         " open tabpage jump queue trigger flag.
         let s:tabpageJumpQueueUpdateTrigger = 1
     else
@@ -213,13 +233,6 @@ endfunction
 
 " go to next tabpage.
 function! mingsxs#jumper#GoNextTabpage()
-    " Add robustness.
-    let l:curPageNumber = tabpagenr()
-    if s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex] != l:curPageNumber
-        echomsg "Error detected, jumplist cleared."
-        let s:tabpageJumpQueue = [l:curPageNumber]
-        let s:tabpageJumpQueueCurrentIndex = 0
-    endif
     if s:tabpageJumpQueueCurrentIndex < len(s:tabpageJumpQueue) - 1
         " close tabpage jump queue trigger flag.
         let s:tabpageJumpQueueUpdateTrigger = 0
@@ -227,6 +240,15 @@ function! mingsxs#jumper#GoNextTabpage()
         let l:nextTabpageNumber = s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex]
         let l:jumpCmd = l:nextTabpageNumber.'tabnext'
         exe l:jumpCmd
+        " Add robustness.
+        let l:curPageNumber = tabpagenr()
+        if s:tabpageJumpQueue[s:tabpageJumpQueueCurrentIndex] != l:curPageNumber
+            echomsg "Error detected, jumplist cleared."
+            let s:tabpageJumpQueue = [l:curPageNumber]
+            let s:tabpageJumpQueueCurrentIndex = 0
+            let s:tabpageJumpQueueRst = 1
+        endif
+        return 0
         " open tabpage jump queue trigger flag.
         let s:tabpageJumpQueueUpdateTrigger = 1
     else
